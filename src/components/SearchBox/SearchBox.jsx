@@ -1,7 +1,7 @@
 import { useState } from "react";
 import css from "./SearchBox.module.css";
 
-function SearchBox({ inputValue, handleChange }) {
+function SearchBox({ searchValue, onUpdateSearchFilter }) {
   return (
     <div className={css.searchContainer}>
       <label className={css.label} htmlFor="search">
@@ -11,8 +11,8 @@ function SearchBox({ inputValue, handleChange }) {
         className={css.input}
         id="search"
         type="text"
-        value={inputValue}
-        onChange={(event) => handleChange(event.target.value)}
+        value={searchValue}
+        onChange={(event) => onUpdateSearchFilter(event.target.value)}
       />
     </div>
   );

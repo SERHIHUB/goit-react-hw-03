@@ -2,7 +2,7 @@ import { FaUserLarge } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa6";
 import css from "./Contact.module.css";
 
-function Contact({ id, name, number, onDelet }) {
+function Contact({ id, name, number, onDelete }) {
   return (
     <div className={css.container}>
       <div className={css.contact}>
@@ -11,9 +11,9 @@ function Contact({ id, name, number, onDelet }) {
           {name}
         </p>
         <FaPhone className={css.icon} />
-        <a href="">{number}</a>
+        <a href={`tel:${number}`}>{number}</a>
       </div>
-      <button className={css.button} onClick={() => onDelet(id)} type="button">
+      <button className={css.button} onClick={() => onDelete(id)} type="button">
         Delete
       </button>
     </div>

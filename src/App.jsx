@@ -19,10 +19,10 @@ function App() {
     return savedObject !== null ? JSON.parse(savedObject) : arreyContacts;
   });
 
-  const [nameValue, setNameValue] = useState("");
+  const [searchFilter, setSearchFilter] = useState("");
 
   const filterContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(nameValue.toLowerCase())
+    contact.name.toLowerCase().includes(searchFilter.toLowerCase())
   );
 
   const addContact = (newContact) => {
@@ -31,7 +31,7 @@ function App() {
     });
   };
 
-  const deletContact = (contactId) => {
+  const deleteContact = (contactId) => {
     setContacts((prevContacts) => {
       return prevContacts.filter((contact) => contact.id !== contactId);
     });
@@ -45,8 +45,11 @@ function App() {
     <>
       <h1 className="title">Phonebook</h1>
       <ContactForm onAdd={addContact} />
-      <SearchBox inputValue={nameValue} handleChange={setNameValue} />
-      <ContactList contactItem={filterContacts} onDelet={deletContact} />
+      <SearchBox
+        searchValue={searchFilter}
+        onUpdateSearchFilter={setSearchFilter}
+      />
+      <ContactList contacts={filterContacts} onDelete={deleteContact} />
     </>
   );
 }
